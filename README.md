@@ -194,7 +194,7 @@ SF11C2272917860649060,1,201508080000-07:00,201508080100-07:00,0.0057,0.0057,0.00
 
 To get a merged set of files, you'd run
 
-    ../bin/merge-emissions \
+    merge-emissions \
         fire_emissions_US.csv:fire_events_US.csv:fire_locations_US.csv:USA \
         fire_emissions_CA.csv:fire_events_CA.csv:fire_locations_CA.csv:CA \
         -e fire_emissions_merged.csv \
@@ -255,7 +255,7 @@ In the situation where two agencies are running BSF, one agency in the USA and o
 filtering may be done as a separate step from the merge.  Using the example files above,
 The USA agency would run
 
-    ../bin/merge-emissions \
+    merge-emissions \
         fire_emissions_US.csv:fire_events_US.csv:fire_locations_US.csv:USA \
         -e fire_emissions_US_filtered.csv \
         -v fire_events_US_filtered.csv \
@@ -263,7 +263,7 @@ The USA agency would run
 
 And the CA agency would run:
 
-    ../bin/merge-emissions \
+    merge-emissions \
         fire_emissions_CA.csv:fire_events_CA.csv:fire_locations_CA.csv:CA \
         -e fire_emissions_CA_filtered.csv \
         -v fire_events_CA_filtered.csv \
@@ -271,7 +271,7 @@ And the CA agency would run:
 
 Then, the two sets of files can be merged with:
 
-    ../bin/merge-emissions \
+    merge-emissions \
         fire_emissions_US_filtered.csv:fire_events_US_filtered.csv:fire_locations_US_filtered.csv \
         fire_emissions_CA_filtered.csv:fire_events_CA_filtered.csv:fire_locations_CA_filtered.csv \
         -e fire_emissions_merged.csv \
