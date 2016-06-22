@@ -19,12 +19,12 @@ import traceback
 from pyairfire import scripting
 
 try:
-    from blueskyutils.bsf.dispersionnc import PointExtractor
+    from blueskyutils.netcdf.pointextraction import PointExtractor
 except:
     import os
     root_dir = os.path.abspath(os.path.join(sys.path[0], '../../'))
     sys.path.insert(0, root_dir)
-    from blueskyutils.bsf.dispersionnc import PointExtractor
+    from blueskyutils.netcdf.pointextraction import PointExtractor
 
 # Note: though some argue that all required parameters should be specified as
 # positional arguments, I prefer using 'options' flags, even though this

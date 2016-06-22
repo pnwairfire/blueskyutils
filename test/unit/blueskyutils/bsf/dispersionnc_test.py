@@ -3,7 +3,7 @@ __author__      = "Joel Dubowy"
 import datetime
 from pytest import raises
 
-from blueskyutils.bsf.dispersionnc import PointExtractor
+from blueskyutils.netcdf.pointextraction import PointExtractor
 
 
 def new_initialize(self, nc_file_pathname):

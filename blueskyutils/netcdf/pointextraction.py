@@ -1,4 +1,4 @@
-"""blueskyutils.bsf.dispersionnc: Provides uilities for extracting data
+"""blueskyutils.netcdf.pointextraction: Provides uilities for extracting data
 from smoke dispersion nc files.
 
 @see: https://github.com/ecolell/netcdf
@@ -19,7 +19,7 @@ __all__ = [
 class PointExtractor(object):
     """
     Example:
-     >>> from blueskyutils.bsf.dispersionnc import PointExtractor
+     >>> from blueskyutils.netcdf.pointextraction import PointExtractor
      >>> PointExtractor("/Users/jdubowy/Downloads/bluesky-output/smoke_dispersion-pnw-4k-2014082600.nc").extract(47.0, -122)
     """
 
