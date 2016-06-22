@@ -79,8 +79,8 @@ def main():
     try:
         fm = FiresMerger(*args.fire_files)
         fm.write(args.output_file)
-    except Exception, e:
-        print traceback.format_exc()
+    except Exception as e:
+        print(traceback.format_exc())
         utils.exit_with_msg(e)
 
 if __name__ == "__main__":

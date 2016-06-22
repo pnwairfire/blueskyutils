@@ -191,7 +191,7 @@ class PointExtractor(object):
         lat_index = int((lat - self.sw_lat) / self.lat_res)
         lng_index = int((adjusted_lng - self.adjusted_sw_lng) / self.lat_res)
 
-        lat_index_range = range(max(0, lat_index-1), min(self.num_rows, lat_index+2))
-        lng_index_range = range(max(0, lng_index-1), min(self.num_cols, lng_index+2))
+        lat_index_range = list(range(max(0, lat_index-1), min(self.num_rows, lat_index+2)))
+        lng_index_range = list(range(max(0, lng_index-1), min(self.num_cols, lng_index+2)))
 
         return (lat_index, lng_index, lat_index_range, lng_index_range)

@@ -120,7 +120,7 @@ class TestPointExtractor():
         with raises(RuntimeError) as r:
             self.pe._compute_grid_index_ranges(45, -165) # west of it
         # lat/lng inside domain
-        assert_output_match((5, 2, range(4,7), range(1,4)),
+        assert_output_match((5, 2, list(range(4,7)), list(range(1,4))),
             self.pe._compute_grid_index_ranges(45.23, -157.232))
 
         ## Cases where domain is completely in eastern hemisphere
@@ -140,7 +140,7 @@ class TestPointExtractor():
         with raises(RuntimeError) as r:
             self.pe._compute_grid_index_ranges(-25, 155) # west of it
         # lat/lng inside domain
-        assert_output_match((7, 8, range(6,9), range(7,10)),
+        assert_output_match((7, 8, list(range(6,9)), list(range(7,10))),
             self.pe._compute_grid_index_ranges(-22.23, 168.232))
 
         # Case where domain straddles international dateline
@@ -162,9 +162,9 @@ class TestPointExtractor():
         with raises(RuntimeError) as r:
             self.pe._compute_grid_index_ranges(35, -155) # east of it
         # lat/lng inside domain
-        assert_output_match((2, 2, range(1,4), range(1,4)),
+        assert_output_match((2, 2, list(range(1,4)), list(range(1,4))),
             self.pe._compute_grid_index_ranges(32.0, 172.3))
-        assert_output_match((3, 18, range(2,5), range(17,20)),
+        assert_output_match((3, 18, list(range(2,5)), list(range(17,20))),
             self.pe._compute_grid_index_ranges(33.2, -172.0))
 
         # Case where domain straddles GMT
@@ -188,9 +188,9 @@ class TestPointExtractor():
         with raises(RuntimeError) as r:
             self.pe._compute_grid_index_ranges(35, 14.2) # east of it
         # lat/lng inside domain
-        assert_output_match((2, 2, range(1,4), range(1,4)),
+        assert_output_match((2, 2, list(range(1,4)), list(range(1,4))),
             self.pe._compute_grid_index_ranges(32.0, -7.23))
-        assert_output_match((3, 18, range(2,5), range(17,20)),
+        assert_output_match((3, 18, list(range(2,5)), list(range(17,20))),
             self.pe._compute_grid_index_ranges(33.2, 8.2))
 
         # TODO: case where lat,lng is SW corner grid cell
