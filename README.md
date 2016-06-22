@@ -52,7 +52,9 @@ or http:
 After installing the non-python dependencies (mentioned above), run the
 following to install required python packages:
 
-    pip install -r requirements.txt
+    pip install --trusted-host pypi.smoke.airfire.org -i http://pypi.smoke.airfire.org/simple -r requirements.txt
+    pip install -r requirements-test.txt
+    pip install -r requirements-dev.txt
 
 ### Setup Environment
 
@@ -69,11 +71,7 @@ the command line, such as in the following:
 
 ## Running tests
 
-First, install test-specific packages:
-
-    pip install -r requirements-test.txt
-
-Once installed, you can run tests with pytest:
+Run tests with pytest:
 
     py.test
     py.test ./test/blueskyutils/bsf/dispersionnc_tests.py
