@@ -74,8 +74,8 @@ the command line, such as in the following:
 Run tests with pytest:
 
     py.test
-    py.test ./test/blueskyutils/bsf/dispersionnc_tests.py
-    py.test ./test/blueskyutils/bsf/
+    py.test ./test/blueskyutils/netcdf/
+    py.test ./test/blueskyutils/csv/test_merge.py
 
 You can also use the ```--collect-only``` option to see a list of all tests.
 
