@@ -16,12 +16,12 @@ from argparse import ArgumentParser
 from pyairfire.scripting import utils
 
 try:
-    from blueskyutils.bsf.merge import FiresMerger
+    from blueskyutils.csv.merge import FiresMerger
 except:
     import os
     root_dir = os.path.abspath(os.path.join(sys.path[0], '../../'))
     sys.path.insert(0, root_dir)
-    from blueskyutils.bsf.merge import FiresMerger
+    from blueskyutils.csv.merge import FiresMerger
 
 USAGE = """%(prog)s filename[:countrycode[,countrycode]] ...
 

@@ -1,4 +1,4 @@
-"""blueskyutils.bsf.merge
+"""blueskyutils.csv.merge
 
 TODO: write unit tests
 """

@@ -3,7 +3,7 @@ __author__      = "Joel Dubowy"
 import datetime
 from pytest import raises
 
-from blueskyutils.bsf import merge
+from blueskyutils.csv import merge
 
 
 FIRE_LOCATIONS_1 = """\

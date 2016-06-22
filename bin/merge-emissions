@@ -15,12 +15,12 @@ from argparse import ArgumentParser, RawTextHelpFormatter
 from pyairfire.scripting import utils
 
 try:
-    from blueskyutils.bsf.merge import EmissionsMerger
+    from blueskyutils.csv.merge import EmissionsMerger
 except:
     import os
     root_dir = os.path.abspath(os.path.join(sys.path[0], '../../'))
     sys.path.insert(0, root_dir)
-    from blueskyutils.bsf.merge import EmissionsMerger
+    from blueskyutils.csv.merge import EmissionsMerger
 
 USAGE = """%(prog)s <FILE_SET> [<FILE_SET> ...] -e <OUTPUT_EMISSIONS_FILE> \\
          -v <OUTPUT_EVENTS_FILE> -f <OUTPUT_FIRE_LOCATIONS_FILE>
