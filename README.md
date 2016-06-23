@@ -278,4 +278,22 @@ Then, the two sets of files can be merged with:
         -v fire_events_merged.csv \
         -f fire_locations_merged.csv
 
-At this point, you'd have the set same set of *_merged.csv files listed above.
+At this point, you'd have the same set of *_merged.csv files listed above.
+
+## Docker
+
+BlueSkyUtils is installed as part of the
+[bluesky package](https://github.com/pnwairfire/bluesky/),
+and so it is included in the
+[bluesky docker image](https://hub.docker.com/r/pnwairfire/bluesky/).
+To use it in docker, first install docker (see
+https://docs.docker.com/engine/installation/linux/ubuntulinux/), and then
+run something like the following (adjusting the command to point to your actual file directory
+and file names, etc.):
+
+    sudo docker run --rm -v /path/to/csv/files/:/files/ -w /files/ pnwairfire/bluesky \
+        merge-emissions \
+        fire_emissions_20160622.csv:fire_events_20160622.csv:fire_locations_20160622.csv:USA \
+        -e fire_emissions_20160622_US.csv \
+        -v fire_events_20160622_US.csv \
+        -f fire_locations_20160622_US.csv
