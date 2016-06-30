@@ -58,7 +58,7 @@ def parse_args():
         help="base name of timestamped output file, and name of sym link; "
         "defaults to 'egp.kmz'")
     parser.add_argument('--output-timestamp-format', default="%Y%m%dT%H%M%S")
-    parser.add_argument('--kml-root-name', help="e.g. '%Y%m%d BlueSky Forecast'")
+    parser.add_argument('--kml-root-name', help="e.g. '%%Y%%m%%d BlueSky Forecast'")
     parser.add_argument('--ignore-existing-output', default=False,
         action="store_true", help="Ignore existing output and regenerate it")
     # TODO: option to override sym link name, with default to output file
