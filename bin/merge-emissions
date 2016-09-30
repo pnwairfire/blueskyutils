@@ -12,7 +12,7 @@ import sys
 import traceback
 from argparse import ArgumentParser, RawTextHelpFormatter
 
-from pyairfire.scripting import utils
+from afscripting import utils
 
 try:
     from blueskyutils.csv.merge import EmissionsMerger

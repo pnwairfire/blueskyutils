@@ -2,8 +2,8 @@
 
 """process-bluesky-kmz
 
-Note: This script is avoids importing from the pyairfire and blueskyutils
-packages so that it is easily distributable.
+Note: This script is avoids importing from the afscripting, and
+blueskyutils packages so that it is easily distributable.
 
 TODO: rename this script
 """

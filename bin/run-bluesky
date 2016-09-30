@@ -8,7 +8,7 @@ import logging
 import os
 import subprocess
 
-from pyairfire import scripting
+from afscripting import options as scripting_options
 
 DEFAULT_OUT_DIR_BASE_NAME = "run-bluesky"
 DEFAULT_INIT_TIME = '2014053100'
@@ -136,7 +136,7 @@ Example calls:
 """
 
 def main():
-    parser, options, args = scripting.options.parse_options(REQUIRED_OPTIONS,
+    parser, options, args = scripting_options.parse_options(REQUIRED_OPTIONS,
         OPTIONAL_OPTIONS, post_options_outputter=lambda: post_options_content)
 
     if options.output_dir_basename:

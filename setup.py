@@ -31,12 +31,12 @@ setup(
     url='https://github.com/pnwairfire/blueskyutils',
     description='BlueSky python utilities for AirFire team.',
     install_requires=[
-        "pyairfire>=1.2.0,<2.0.0",
+        "afscripting==1.*",
         "xmltodict==0.10.2",
         "netCDF4==1.2.4"
     ],
     dependency_links=[
-        "https://pypi.smoke.airfire.org/simple/pyairfire/"
+        "https://pypi.smoke.airfire.org/simple/afscripting/"
     ],
     tests_require=test_requirements
 )

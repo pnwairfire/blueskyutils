@@ -16,7 +16,10 @@ import logging
 import sys
 import traceback
 
-from pyairfire import scripting
+from afscripting import (
+    options as scripting_options,
+    utils as scripting_utils
+)
 
 try:
     from blueskyutils.netcdf.pointextraction import PointExtractor
@@ -55,7 +58,7 @@ REQUIRED_OPTIONS = [
 OPTIONAL_OPTIONS = []
 
 def main():
-    parser, options, args = scripting.options.parse_options(REQUIRED_OPTIONS,
+    parser, options, args = scripting_options.parse_options(REQUIRED_OPTIONS,
         OPTIONAL_OPTIONS)
 
     try:
@@ -68,7 +71,7 @@ def main():
 
     except Exception as e:
         logging.debug(traceback.format_exc())
-        scripting.utils.exit_with_msg(e)
+        scripting_utils.exit_with_msg(e)
 
 if __name__ == "__main__":
     main()
