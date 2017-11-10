@@ -2,8 +2,10 @@
 
 import csv
 
+
+
 def main():
-    with open('/Users/rhoffman/code/airfire_misc/susan/blueskyutils/test/data/bsf2wrfchem_data/fire_locations_20130817.csv', 'r') as csv_file:
+    with open('/Users/rhoffman/code/airfire_misc/susan/blueskyutils/test/data/bsf2wrfchem_data/fire_locations_20130818.csv', 'r') as csv_file:
         csv_reader = csv.DictReader(csv_file)
 
 
@@ -13,6 +15,7 @@ def main():
 
         for line in csv_reader:
             print(line)
+
 
 if __name__ == '__main__':
     main()
