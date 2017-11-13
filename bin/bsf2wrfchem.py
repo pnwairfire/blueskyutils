@@ -1,32 +1,37 @@
 #!/usr/bin/env python3
 
-import csv
-import os
 import argparse
+import csv
+import logging
+import os
+import sys
 
-parser = argparse.ArgumentParser(description='Choose file: integer 0 - 6')
-parser.add_argument('-x', '--file_number', type=int, help='number of file')
-args = parser.parse_args()
+EPILOG_STR = """
+Example
 
-path = '/Users/rhoffman/code/airfire_misc/susan/blueskyutils/test/data/bsf2wrfchem_data/'
-files = [
-        'fire_locations_20130817.csv',
-        'fire_locations_20130818.csv',
-        'fire_locations_20130819.csv',
-        'fire_locations_20130820.csv',
-        'fire_locations_20130821.csv',
-        'fire_locations_20130822.csv',
-        'fire_locations_20130823.csv'
-        ]
+   $ {script_name} -i fire_locations_20130817.csv \\
+        -f finn-input-20130817.csv -w wrf-chem-input-20130817.csv
 
+ """.format(script_name=sys.argv[0])
 
-def main(x):
-    f = files[x]
-    file = open(path +'%s' % f, 'r')
-    csv_reader = csv.DictReader(file)
-    for line in csv_reader:
-        print(line)
+def parse_args():
+    parser = argparse.ArgumentParser(description='Choose file: integer 0 - 6',
+        epilog=EPILOG_STR, formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('-i', '--fire-locations-input-file', required=True,
+        help='Fire locations csv file to process')
+    parser.add_argument('-f', '--finn-input-file', required=True,
+        help='Finn input input csv file to generate')
+    parser.add_argument('-w', '--wrf-chem-input-file', required=False,
+        help='WRF-Chem input csv file to generate')
+    return parser.parse_args()
 
+def main(args):
+    logging.debug("Opening %s", args.fire_locations_input_file)
+    with open(args.fire_locations_input_file, 'r') as file:
+        csv_reader = csv.DictReader(file)
+        for line in csv_reader:
+            print(line)
 
 if __name__ == '__main__':
-    main(args.file_number)
+    args = parse_args()
+    main(args)
