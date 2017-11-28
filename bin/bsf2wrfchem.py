@@ -5,6 +5,7 @@ import csv
 import logging
 import os
 import sys
+import linecache
 
 EPILOG_STR = """
 Example
@@ -29,8 +30,13 @@ def main(args):
     logging.debug("Opening %s", args.fire_locations_input_file)
     with open(args.fire_locations_input_file, 'r') as file:
         csv_reader = csv.DictReader(file)
-        for line in csv_reader:
-            print(line)
+
+        n = 5
+        line = next((x for i, x in enumerate(csv_reader) if i == n), None)
+        print(line['pm25'])
+
+        #for line in csv_reader:
+            #print(line)
 
 if __name__ == '__main__':
     args = parse_args()
