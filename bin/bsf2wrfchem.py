@@ -5,7 +5,6 @@ import csv
 import logging
 import os
 import sys
-import linecache
 
 EPILOG_STR = """
 Example
