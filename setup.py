@@ -14,6 +14,7 @@ setup(
     author_email='jdubowy@gmail.com',
     packages=find_packages(),
     scripts=[
+        'bin/bsf2wrfchem',
         'bin/extract-point-pm25-time-series',
         'bin/merge-emissions',
         'bin/merge-fires',
