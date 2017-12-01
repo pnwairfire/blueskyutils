@@ -1,7 +1,7 @@
 import csv
 import logging
 
-from .speciation import FINN_SPECIATION
+from .speciation import BSF2FINN_SPECIATION_FACTORS
 
 def convert_bsf_to_finn(bsf_fire):
     finn_fire = {"fake_finn_field_1": 1, "fake_finn_field_2": "sdf"}
