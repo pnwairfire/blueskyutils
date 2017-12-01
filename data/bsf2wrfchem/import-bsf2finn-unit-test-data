@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+import os
+import csv
+import json
+import sys
+
+BSF_COLUMNS = [
+    'latitude', 'longitude', 'area', 'pm25', 'pm10',
+    'co', 'co2', 'ch4', 'nox', 'nh3', 'so2', 'voc',
+    'VEG', 'fccs_number', 'voc'
+]
+
+def main():
+    input_file = os.path.join(sys.path[0], 'bsf2finn-unit-test-data.csv')
+    with open(input_file, 'r') as f:
+        data = [r for r in csv.DictReader(f)]
+    bsf_fires = [{k: d[k] for k in d if k in BSF_COLUMNS } for d in data]
+    finn_fires = [{k: d[k] for k in d if k not in BSF_COLUMNS } for d in data]
+
+    output_file = os.path.abspath(os.path.join(sys.path[0],
+        '../../test/unit/blueskyutils/bsf2wrfchem/bsf2finndata.py'))
+    with open(output_file, 'w') as f:
+        f.write("BSF_FIRES = " + json.dumps(bsf_fires, indent=4))
+        f.write("\n")
+        f.write("FINN_FIRES = " + json.dumps(finn_fires, indent=4))
+
+if __name__ == '__main__':
+    main()
