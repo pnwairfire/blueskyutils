@@ -22,11 +22,26 @@ def convert_bsf_to_finn(bsf_fire):
         'CO2': float(bsf_fire['co2']) * KG_PER_TON * 1000 / 44,
         'CH4': float(bsf_fire['ch4']) * KG_PER_TON * 1000 / 16,
         'NO': float(bsf_fire['nox']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["NO"]) / 30,
-        # 'NH3':
-        # 'SO2':
-        # 'VOC':
-        # 'VEG':
+        'NO2': float(bsf_fire['no2']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["NO2"]) / 46,
+        'NH3': float(bsf_fire['nh3']) * KG_PER_TON * 1000 / 17
+        'SO2': float(bsf_fire['so2']) * KG_PER_TON * 1000 / 64
+        'BIGALD': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGALD"])
+        'BIGALK': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGALK"])
+        'BIGENE': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGENE"])
+        'C10H16': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C10H16"])
+        'C2H4': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H4"])
+        'C2H5OH': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H5OH"])
+        'C2H6': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H6"])
+        'C3H6': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C3H6"])
+        'C3H8': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C3H8"])
+        'CH2O': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH2O"])
+        'CH3CHO': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3CHO"])
+        'CH3CN': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3CN"])
+        'CH3COCH3': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COCH3"])
+        'CH3COCHO': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COCHO"])
+
         # ''
+
 
         # TODO: continue setting fields in finn_fire based on
         #  what's in bsf_fire
