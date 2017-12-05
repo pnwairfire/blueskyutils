@@ -8,10 +8,11 @@ M2_PER_ACRE = 1000000 / 247.105  # == 4046.8626697153
 KG_PER_TON = 907.185
 
 def convert_bsf_to_finn(bsf_fire):
+    gen_veg = FCCS2GENVEG[bsf_fire['fccs_number']]
     finn_fire = {
         'DAY': '', # TODO: fill in using file timestamp
         'TIME': '', # TODO: not sure hot to fill in
-        'GENVEG': FCCS2GENVEG.get(bsf_fire['fccs_number'], ''),
+        'GENVEG': gen_veg,
         'LATI': float(bsf_fire['latitude']),
         'LONGI': float(bsf_fire['longitude']),
         'AREA': float(bsf_fire['area']) * M2_PER_ACRE,
@@ -20,18 +21,17 @@ def convert_bsf_to_finn(bsf_fire):
         'CO': float(bsf_fire['co']) * KG_PER_TON *1000 / 28,
         'CO2': float(bsf_fire['co2']) * KG_PER_TON * 1000 / 44,
         'CH4': float(bsf_fire['ch4']) * KG_PER_TON * 1000 / 16,
-        'NO': float(bsf_fire['nox']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS["9"]["NO"]) / 30,
-        'NH3':
-        'SO2':
-        'VOC':
-        'VEG':
-        ''
+        'NO': float(bsf_fire['nox']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["NO"]) / 30,
+        # 'NH3':
+        # 'SO2':
+        # 'VOC':
+        # 'VEG':
+        # ''
 
         # TODO: continue setting fields in finn_fire based on
         #  what's in bsf_fire
 
     }
-
 
     return finn_fire
 
