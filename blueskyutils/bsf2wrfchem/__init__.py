@@ -49,7 +49,15 @@ def convert(fire_locations_input_file, finn_input_file, wrf_chem_input_file):
         bsf_fires = [f for f in csv.DictReader(file)]
 
     # convert fires from bsf format to finn
-    finn_fires = [convert_bsf_to_finn(f) for f in bsf_fires]
+    finn_fires = []
+    for f in bsf_fires:
+        try:
+            finn_fires.append(convert_bsf_to_finn(f))
+        except Exception as e:
+            logging.error("Failed to convert BSF fire %s: %s", f, e)
+    if not finn_fires:
+        raise RuntimeError("Failed to convert all BSF fires")
+
     with open(finn_input_file, 'w') as finn_output_file:
         writer = csv.DictWriter(finn_output_file, list(finn_fires[0].keys()))
         writer.writeheader()
