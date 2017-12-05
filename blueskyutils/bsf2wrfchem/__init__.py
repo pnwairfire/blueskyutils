@@ -39,6 +39,20 @@ def convert_bsf_to_finn(bsf_fire):
         'CH3CN': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3CN"])
         'CH3COCH3': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COCH3"])
         'CH3COCHO': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COCHO"])
+        'CH3COOH': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COOH"])
+        'CH3OH': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3OH"])
+        'CRESOL': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CRESOL"])
+        'GLYALD': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["GLYALD"])
+        'HCN': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HCN"])
+        'HYAC': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HYAC"])
+        'ISOP': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["ISOP"])
+        'MACR': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MACR"])
+        'MEK': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MEK"])
+        'MVK': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MVK"])
+        'TOLUENE': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["TOLUENE"])
+        'HCOOH': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HCOOH"])
+        'C2H2': float(bsf_fire['voc']) * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H2"])
+
 
         # ''
 
