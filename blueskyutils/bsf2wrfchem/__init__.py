@@ -24,7 +24,7 @@ def convert_bsf_to_finn(bsf_fire):
         'CO2': float(bsf_fire['co2']) * KG_PER_TON * 1000 / 44,
         'CH4': float(bsf_fire['ch4']) * KG_PER_TON * 1000 / 16,
         'NO': float(bsf_fire['nox']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["NO"]) / 30,
-        'NO2': float(bsf_fire['no2']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["NO2"]) / 46,
+        'NO2': float(bsf_fire['nox']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["NO2"]) / 46,
         'NH3': float(bsf_fire['nh3']) * KG_PER_TON * 1000 / 17,
         'SO2': float(bsf_fire['so2']) * KG_PER_TON * 1000 / 64,
         'BIGALD': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGALD"]),
