@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import logging
 import os
 import sys
 
@@ -25,10 +26,13 @@ def parse_args():
         help='Finn input input csv file to generate')
     parser.add_argument('-w', '--wrf-chem-input-file', required=False,
         help='WRF-Chem input csv file to generate')
+    parser.add_argument('-d', '--debug', required=False,
+        action="store_true", default=False, help='debug logging, etc.')
     return parser.parse_args()
 
 def main():
     args = parse_args()
+    logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
     bsf2wrfchem.convert(args.fire_locations_input_file, args.finn_input_file,
         args.wrf_chem_input_file)
 

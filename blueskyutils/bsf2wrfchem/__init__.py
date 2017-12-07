@@ -1,5 +1,6 @@
 import csv
 import logging
+import traceback
 
 from .speciation import BSF2FINN_SPECIATION_FACTORS
 from .fccs2genveg import FCCS2GENVEG
@@ -84,7 +85,8 @@ def convert(fire_locations_input_file, finn_input_file, wrf_chem_input_file):
         try:
             finn_fires.append(convert_bsf_to_finn(f))
         except Exception as e:
-            logging.error("Failed to convert BSF fire %s: %s", f, e)
+            logging.error("Failed to convert BSF fire %s", f)
+            logging.debug(traceback.format_exc())
     if not finn_fires:
         raise RuntimeError("Failed to convert all BSF fires")
 
