@@ -24,34 +24,34 @@ def convert_bsf_to_finn(bsf_fire):
         'CH4': float(bsf_fire['ch4']) * KG_PER_TON * 1000 / 16,
         'NO': float(bsf_fire['nox']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["NO"]) / 30,
         'NO2': float(bsf_fire['no2']) * KG_PER_TON * 1000 * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["NO2"]) / 46,
-        'NH3': float(bsf_fire['nh3']) * KG_PER_TON * 1000 / 17
-        'SO2': float(bsf_fire['so2']) * KG_PER_TON * 1000 / 64
-        'BIGALD': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGALD"])
-        'BIGALK': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGALK"])
-        'BIGENE': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGENE"])
-        'C10H16': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C10H16"])
-        'C2H4': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H4"])
-        'C2H5OH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H5OH"])
-        'C2H6': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H6"])
-        'C3H6': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C3H6"])
-        'C3H8': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C3H8"])
-        'CH2O': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH2O"])
-        'CH3CHO': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3CHO"])
-        'CH3CN': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3CN"])
-        'CH3COCH3': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COCH3"])
-        'CH3COCHO': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COCHO"])
-        'CH3COOH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COOH"])
-        'CH3OH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3OH"])
-        'CRESOL': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CRESOL"])
-        'GLYALD': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["GLYALD"])
-        'HCN': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HCN"])
-        'HYAC': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HYAC"])
-        'ISOP': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["ISOP"])
-        'MACR': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MACR"])
-        'MEK': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MEK"])
-        'MVK': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MVK"])
-        'TOLUENE': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["TOLUENE"])
-        'HCOOH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HCOOH"])
+        'NH3': float(bsf_fire['nh3']) * KG_PER_TON * 1000 / 17,
+        'SO2': float(bsf_fire['so2']) * KG_PER_TON * 1000 / 64,
+        'BIGALD': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGALD"]),
+        'BIGALK': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGALK"]),
+        'BIGENE': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["BIGENE"]),
+        'C10H16': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C10H16"]),
+        'C2H4': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H4"]),
+        'C2H5OH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H5OH"]),
+        'C2H6': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H6"]),
+        'C3H6': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C3H6"]),
+        'C3H8': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C3H8"]),
+        'CH2O': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH2O"]),
+        'CH3CHO': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3CHO"]),
+        'CH3CN': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3CN"]),
+        'CH3COCH3': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COCH3"]),
+        'CH3COCHO': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COCHO"]),
+        'CH3COOH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3COOH"]),
+        'CH3OH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CH3OH"]),
+        'CRESOL': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["CRESOL"]),
+        'GLYALD': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["GLYALD"]),
+        'HCN': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HCN"]),
+        'HYAC': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HYAC"]),
+        'ISOP': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["ISOP"]),
+        'MACR': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MACR"]),
+        'MEK': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MEK"]),
+        'MVK': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["MVK"]),
+        'TOLUENE': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["TOLUENE"]),
+        'HCOOH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HCOOH"]),
         'C2H2': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H2"])
 
 
