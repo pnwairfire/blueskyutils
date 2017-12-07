@@ -12,8 +12,6 @@ def convert_bsf_to_finn(bsf_fire):
     gen_veg = FCCS2GENVEG[bsf_fire.get('fccs_number') or '0']
     bsf_fire_voc = float(bsf_fire['voc'])
     finn_fire = {
-        'DAY': '', # TODO: fill in using file timestamp
-        'TIME': '', # TODO: not sure hot to fill in
         'GENVEG': gen_veg,
         'LATI': float(bsf_fire['latitude']),
         'LONGI': float(bsf_fire['longitude']),
