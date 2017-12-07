@@ -9,7 +9,7 @@ M2_PER_ACRE = 1000000 / 247.105  # == 4046.8626697153
 KG_PER_TON = 907.185
 
 def convert_bsf_to_finn(bsf_fire):
-    gen_veg = FCCS2GENVEG[bsf_fire['fccs_number']]
+    gen_veg = FCCS2GENVEG[bsf_fire.get('fccs_number') or '0']
     bsf_fire_voc = float(bsf_fire['voc'])
     finn_fire = {
         'DAY': '', # TODO: fill in using file timestamp
