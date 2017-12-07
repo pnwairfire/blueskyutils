@@ -4,12 +4,9 @@ import argparse
 import os
 import sys
 
-try:
-    from blueskyutils import bsf2wrfchem
-except:
-    root_dir = os.path.abspath(os.path.join(sys.path[0], '../../'))
-    sys.path.insert(0, root_dir)
-    from blueskyutils import bsf2wrfchem
+# in case this be run in dev
+sys.path.insert(0, os.path.abspath(os.path.join(sys.path[0], '../../')))
+from blueskyutils import bsf2wrfchem
 
 EPILOG_STR = """
 Example
