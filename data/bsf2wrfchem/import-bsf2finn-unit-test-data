@@ -16,7 +16,7 @@ def main():
         'bsf2finn-unit-test-data-FINN.csv')
     with open(finn_input_file, 'r') as f:
         data = [r for r in csv.DictReader(f)]
-    finn_fires = [{k: d[k] for k in d} for d in data]
+    finn_fires = [{k: float(d[k]) for k in d} for d in data]
 
     output_file = os.path.abspath(os.path.join(sys.path[0],
         '../../test/unit/blueskyutils/bsf2wrfchem/bsf2finndata.py'))
