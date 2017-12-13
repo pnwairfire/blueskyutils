@@ -10,4 +10,7 @@ class TestBsf2Finn(object):
         # need to use pytest.approx because expected values
         # are truncated
         for k in sorted(FINN_FIRES[0].keys()):
-            assert pytest.approx(finn_fire[k], abs=1e-4) == float(FINN_FIRES[0][k])
+            expected = FINN_FIRES[0][k]
+            val = pytest.approx(finn_fire[k], abs=1e-4)
+            assert_msg = "{} didn't match - {} vs {}".format(k, expected, val)
+            assert expected == val, assert_msg
