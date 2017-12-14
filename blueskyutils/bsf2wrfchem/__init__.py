@@ -10,7 +10,7 @@ KG_PER_TON = 907.185
 
 def convert_bsf_to_finn(bsf_fire):
     gen_veg = FCCS2GENVEG[bsf_fire.get('fccs_number') or '0']
-    bsf_fire_voc = float(bsf_fire['voc']) * 907.185
+    bsf_fire_voc = float(bsf_fire['voc']) * KG_PER_TON
     finn_fire = {
         'GENVEG': gen_veg,
         'LATI': float(bsf_fire['latitude']),
