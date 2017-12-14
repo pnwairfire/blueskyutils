@@ -19,7 +19,13 @@ def main():
         '{}_SF2-BSF2FINN.csv'.format(DATE))
     with open(finn_input_file, 'r') as f:
         data = [r for r in csv.DictReader(f)]
-    finn_fires = [{k: float(d[k]) for k in d} for d in data][:NUM_FIRES]
+    finn_fires = [{k: d[k] for k in d} for d in data][:NUM_FIRES]
+    for f in finn_fires:
+        f.pop('DAY')
+        f.pop('TIME')
+        for k in f:
+            if k != 'GENVEG':
+                f[k] = float(f[k])
 
     output_file = os.path.abspath(os.path.join(sys.path[0],
         '../../unit/blueskyutils/bsf2wrfchem/bsf2finndata.py'))
