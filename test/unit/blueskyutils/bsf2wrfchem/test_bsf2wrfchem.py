@@ -11,6 +11,6 @@ class TestBsf2Finn(object):
         # are truncated
         for k in sorted(FINN_FIRES[0].keys()):
             expected = FINN_FIRES[0][k]
-            val = pytest.approx(finn_fire[k], abs=1e-4)
+            val = pytest.approx(finn_fire[k], abs=1e-2)
             assert_msg = "{} didn't match - {} vs {}".format(k, expected, val)
             assert expected == val, assert_msg
