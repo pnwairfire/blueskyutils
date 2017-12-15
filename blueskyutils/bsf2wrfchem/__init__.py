@@ -92,6 +92,7 @@ def convert(fire_locations_input_file, finn_input_file, wrf_chem_input_file):
         try:
             finn_fire = convert_bsf_to_finn(f)
             finn_fire['DAY'] = julia_day
+            finn_fire['TIME'] = '1000'
             finn_fires.append(finn_fire)
         except Exception as e:
             logging.error("Failed to convert BSF fire %s", f)
