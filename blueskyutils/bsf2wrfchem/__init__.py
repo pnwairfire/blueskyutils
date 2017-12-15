@@ -1,5 +1,7 @@
 import csv
+import datetime
 import logging
+import os
 import traceback
 
 from .speciation import BSF2FINN_SPECIATION_FACTORS
@@ -7,6 +9,11 @@ from .fccs2genveg import FCCS2GENVEG
 
 M2_PER_ACRE = 1000000 / 247.105  # == 4046.8626697153
 KG_PER_TON = 907.185
+
+def extract_julian_day_from_fire_locations_csv_filename(filename):
+    dt = datetime.datetime.strptime(filename, 'fire_locations_%Y%m%d.csv')
+    tt = dt.timetuple()
+    return tt.tm_yday
 
 def convert_bsf_to_finn(bsf_fire):
     gen_veg = FCCS2GENVEG[bsf_fire.get('fccs_number') or '0']
@@ -73,6 +80,8 @@ def convert_finn_to_wrfchem(finn_fire):
 
 def convert(fire_locations_input_file, finn_input_file, wrf_chem_input_file):
     # load bsf fires
+    julia_day = extract_julian_day_from_fire_locations_csv_filename(
+        os.path.basename(fire_locations_input_file))
     logging.debug("Opening %s", fire_locations_input_file)
     with open(fire_locations_input_file, 'r') as file:
         bsf_fires = [f for f in csv.DictReader(file)]
@@ -81,7 +90,9 @@ def convert(fire_locations_input_file, finn_input_file, wrf_chem_input_file):
     finn_fires = []
     for f in bsf_fires:
         try:
-            finn_fires.append(convert_bsf_to_finn(f))
+            finn_fire = convert_bsf_to_finn(f)
+            finn_fire['DAY'] = julia_day
+            finn_fires.append(finn_fire)
         except Exception as e:
             logging.error("Failed to convert BSF fire %s", f)
             logging.debug(traceback.format_exc())
