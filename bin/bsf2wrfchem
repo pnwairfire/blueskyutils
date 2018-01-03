@@ -24,10 +24,14 @@ def parse_args():
         help='Fire locations csv file to process')
     parser.add_argument('-f', '--finn-input-file', required=True,
         help='Finn input input csv file to generate')
-    parser.add_argument('-w', '--wrf-chem-input-file', required=False,
-        help='WRF-Chem input csv file to generate')
+    # parser.add_argument('-w', '--wrf-chem-input-file', required=False,
+    #     help='WRF-Chem input csv file to generate')
     parser.add_argument('-d', '--debug', required=False,
         action="store_true", default=False, help='debug logging, etc.')
+    parser.add_argument('-s', '--start-date', required=True,
+        help='fire data sample start date')
+    parser.add_argument('-e', '--end-date', required=True,
+        help='fire data sample end date')
     return parser.parse_args()
 
 def main():
