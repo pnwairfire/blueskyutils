@@ -13,7 +13,7 @@ EPILOG_STR = """
 Example
 
    $ {script_name} -i fire_locations_20130817.csv \\
-        -f finn-input-20130817.csv -w wrf-chem-input-20130817.csv
+        -f finn-input-20130817.csv -w /path/to/wrf -s 2013-08-17 -e 2013-08-23
 
  """.format(script_name=sys.argv[0])
 
@@ -24,6 +24,10 @@ def parse_args():
         help='Fire locations csv file to process')
     parser.add_argument('-f', '--finn-input-file', required=True,
         help='Finn input input csv file to generate')
+    parser.add_argument('-w', '--wrf-directory', required=True,
+        help='Directory containing wrf-file')
+    parser.add_argument('-c', '--finn-config-file', required=True,
+        help='finn input file compatible with wrfchem')
     # parser.add_argument('-w', '--wrf-chem-input-file', required=False,
     #     help='WRF-Chem input csv file to generate')
     parser.add_argument('-d', '--debug', required=False,
@@ -38,7 +42,7 @@ def main():
     args = parse_args()
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
     bsf2wrfchem.convert(args.fire_locations_input_file, args.finn_input_file,
-        args.wrf_chem_input_file)
+        args.wrf_directory, args.start_date, args.end_date)
 
 if __name__ == '__main__':
     main()
