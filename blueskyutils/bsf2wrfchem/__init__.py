@@ -59,26 +59,13 @@ def convert_bsf_to_finn(bsf_fire):
         'TOLUENE': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["TOLUENE"]),
         'HCOOH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HCOOH"]),
         'C2H2': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H2"])
-
-
         # ''
-
-
         # TODO: continue setting fields in finn_fire based on
         #  what's in bsf_fire
-
     }
-
     return finn_fire
 
-# def convert_finn_to_wrfchem(finn_fire):
-#     wrfchem_fire = {"fake_wrfchem_field_1": 312, "fake_wrfchem_field_2": "jsdflkj"}
-
-    # TODO: set fields in finn_fire based on waht's in bsf_fire
-
-    # return wrfchem_fire
-
-def convert(fire_locations_input_file, finn_input_file, wrf_chem_input_file):
+def convert(fire_locations_input_file, finn_input_file):
     # load bsf fires
     julia_day = extract_julian_day_from_fire_locations_csv_filename(
         os.path.basename(fire_locations_input_file))
@@ -105,7 +92,48 @@ def convert(fire_locations_input_file, finn_input_file, wrf_chem_input_file):
         writer.writeheader()
         writer.writerows(finn_fires)
 
+def create_finn_config_file(finn_fire, finn_config_file):
+    # path will be specified by the user
+    wrf_directory = '/home/susan/WRF/data_from_Serena/'
+    fire_directory = os.path.dirname(finn_input_file)
+    fire_filename = os.path.basename(finn_input_file)
+    start_date = get_start_date_from_args
+    end_date = get_end_date_from_args
+    SPECIES_MAPPINGS = """wrf2fire_map = 'co -> CO', 'no -> NO', 'so2 -> SO2', 'bigalk -> BIGALK',
+                         'bigene -> BIGENE', 'c2h4 -> C2H4', 'c2h5oh -> C2H5OH',
+                         'c2h6 -> C2H6', 'c3h8 -> C3H8','c3h6 -> C3H6','ch2o -> CH2O', 'ch3cho -> CH3CHO',
+                         'ch3coch3 -> CH3COCH3','ch3oh -> CH3OH','mek -> MEK','toluene -> TOLUENE',
+                         'nh3 -> NH3','no2 -> NO2','open -> BIGALD','c10h16 -> C10H16',
+                         'ch3cooh -> CH3COOH','cres -> CRESOL','glyald -> GLYALD','mgly -> CH3COCHO',
+                         'acetol -> HYAC','isop -> ISOP','macr -> MACR'
+                         'mvk -> MVK','hcn -> HCN','hcooh -> HCOOH','c2h2 -> C2H2',
+                         'oc -> 0.24*PM25 + 0.3*PM10;aerosol', 'bc -> 0.01*PM25 + 0.08*PM10;aerosol',
+                         'sulf -> -0.01*PM25 + 0.02*PM10;aerosol',
+                         'pm25 -> 0.36*PM25;aerosol','pm10 -> -0.61*PM25 + 0.61*PM10;aerosol'
+                       """
+    f.write(SPECIES_MAPPINGS)
 
+    # create finn config files
+    finn_pre_config_files = []
+    for f in finn_fires:
+        try:
+            finn_pre_config_file = create_finn_config_file(f)
+            diag_level = 400
+            max_fire_size = 50
+            # how to add species mappings?
+            SPECIES_MAPPINGS = SPECIES_MAPPINGS
+            finn_pre_config_files.append(finn_config_file)
+            # is e the right variable?
+        except Exception as e:
+            # is %s the correct placeholder?
+            logging.error("Failed to create FINN config file %s")
+            logging.debug(traceback.format_exc())
+    if not finn_pre_config_files:
+        raise RuntimeError("Failed to create all FINN config files")
+
+    # this file needs stop to be written as a FINN compatible file, not a csv
+    with open(finn_pre_config_file, 'w') as finn_config_file:
+        writer =
 
     # convert fires from finn format to wrfchem if user specified
     # wrfchem input file
