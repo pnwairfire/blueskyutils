@@ -92,13 +92,8 @@ def convert(fire_locations_input_file, finn_input_file):
         writer.writeheader()
         writer.writerows(finn_fires)
 
-def create_finn_config_file(finn_fire, finn_config_file):
-    # path will be specified by the user
-    wrf_directory = '/home/susan/WRF/data_from_Serena/'
-    fire_directory = os.path.dirname(finn_input_file)
-    fire_filename = os.path.basename(finn_input_file)
-    start_date = get_start_date_from_args
-    end_date = get_end_date_from_args
+def create_finn_config_file(finn_fire, args, finn_config_file):
+
     SPECIES_MAPPINGS = """wrf2fire_map = 'co -> CO', 'no -> NO', 'so2 -> SO2', 'bigalk -> BIGALK',
                          'bigene -> BIGENE', 'c2h4 -> C2H4', 'c2h5oh -> C2H5OH',
                          'c2h6 -> C2H6', 'c3h8 -> C3H8','c3h6 -> C3H6','ch2o -> CH2O', 'ch3cho -> CH3CHO',
@@ -111,29 +106,17 @@ def create_finn_config_file(finn_fire, finn_config_file):
                          'sulf -> -0.01*PM25 + 0.02*PM10;aerosol',
                          'pm25 -> 0.36*PM25;aerosol','pm10 -> -0.61*PM25 + 0.61*PM10;aerosol'
                        """
-    f.write(SPECIES_MAPPINGS)
 
-    # create finn config files
-    finn_pre_config_files = []
-    for f in finn_fires:
-        try:
-            finn_pre_config_file = create_finn_config_file(f)
-            diag_level = 400
-            max_fire_size = 50
-            # how to add species mappings?
-            SPECIES_MAPPINGS = SPECIES_MAPPINGS
-            finn_pre_config_files.append(finn_config_file)
-            # is e the right variable?
-        except Exception as e:
-            # is %s the correct placeholder?
-            logging.error("Failed to create FINN config file %s")
-            logging.debug(traceback.format_exc())
-    if not finn_pre_config_files:
-        raise RuntimeError("Failed to create all FINN config files")
-
-    # this file needs stop to be written as a FINN compatible file, not a csv
-    with open(finn_pre_config_file, 'w') as finn_config_file:
-        writer =
+    with open(finn_config_file, 'w') as f:
+        f.write('domains = 1\n')
+        f.write("fire_directory = '{}',\n".format(os.path.dirname(finn_input_file)))
+        f.write("fire_filename = '{}',\n".format(os.path.basename(finn_input_file)))
+        f.write("wrf_directory = '{}',\n".format('/home/susan/WRF/data_from_Serena/'))
+        f.write("start_date = '{}',\n".format(args.start_date))
+        f.write("end_date = '{}',\n".format(args.end_date))
+        f.write('diag_level = 400')
+        f.write('max_fire_size = 50')
+        f.write(SPECIES_MAPPINGS)
 
     # convert fires from finn format to wrfchem if user specified
     # wrfchem input file
