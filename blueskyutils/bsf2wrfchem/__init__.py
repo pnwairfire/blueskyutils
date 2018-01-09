@@ -59,9 +59,6 @@ def convert_bsf_to_finn(bsf_fire):
         'TOLUENE': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["TOLUENE"]),
         'HCOOH': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["HCOOH"]),
         'C2H2': bsf_fire_voc * float(BSF2FINN_SPECIATION_FACTORS[gen_veg]["C2H2"])
-        # ''
-        # TODO: continue setting fields in finn_fire based on
-        #  what's in bsf_fire
     }
     return finn_fire
 
