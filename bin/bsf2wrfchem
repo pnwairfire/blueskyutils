@@ -12,8 +12,11 @@ from blueskyutils import bsf2wrfchem
 EPILOG_STR = """
 Example
 
-   $ {script_name} -i fire_locations_20130817.csv \\
-        -f finn-input-20130817.csv -w /path/to/wrf -s 2013-08-17 -e 2013-08-23
+   $ {script_name} -i ./test/data/bsf2wrfchem/fire_locations_20130817.csv \\
+        -f ./tmp/finn-input-20130817.csv \\
+        -w /path/to/wrf \\
+        -c ./tmp/inputfile.inp \\
+        -s 2013-08-17 -e 2013-08-23
 
  """.format(script_name=sys.argv[0])
 
