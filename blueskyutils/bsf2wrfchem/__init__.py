@@ -116,12 +116,3 @@ def create_finn_config_file(finn_config_file, finn_input_file, start_date,
         f.write('diag_level = 400')
         f.write('max_fire_size = 50')
         f.write(SPECIES_MAPPINGS)
-
-    # convert fires from finn format to wrfchem if user specified
-    # wrfchem input file
-    # if wrf_chem_input_file:
-    #     wrfchem_fires = [convert_finn_to_wrfchem(f) for f in finn_fires]
-    #     with open(wrf_chem_input_file, 'w') as wrfchem_output_file:
-    #         writer = csv.DictWriter(wrfchem_output_file, list(wrfchem_fires[0].keys()))
-    #         writer.writeheader()
-    #         writer.writerows(wrfchem_fires)
