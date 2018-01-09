@@ -10,6 +10,11 @@ from .fccs2genveg import FCCS2GENVEG
 M2_PER_ACRE = 1000000 / 247.105  # == 4046.8626697153
 KG_PER_TON = 907.185
 
+
+##
+## Helper functions
+##
+
 def extract_julian_day_from_fire_locations_csv_filename(filename):
     dt = datetime.datetime.strptime(filename, 'fire_locations_%Y%m%d.csv')
     tt = dt.timetuple()
@@ -75,8 +80,8 @@ SPECIES_MAPPINGS = """wrf2fire_map = 'co -> CO', 'no -> NO', 'so2 -> SO2', 'biga
         'pm25 -> 0.36*PM25;aerosol','pm10 -> -0.61*PM25 + 0.61*PM10;aerosol'
 """
 
-def create_finn_config_file(finn_config_file, finn_input_file, start_date,
-        end_date, wrf_directory):
+def create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
+        start_date, end_date):
 
 
     with open(finn_config_file, 'w') as f:
@@ -90,7 +95,12 @@ def create_finn_config_file(finn_config_file, finn_input_file, start_date,
         f.write('max_fire_size = 50')
         f.write(SPECIES_MAPPINGS)
 
-def convert(fire_locations_input_file, finn_input_file):
+##
+## Public interface
+##
+
+def convert(fire_locations_input_file, finn_input_file, wrf_directory,
+        finn_config_file, start_date, end_date):
     # load bsf fires
     julia_day = extract_julian_day_from_fire_locations_csv_filename(
         os.path.basename(fire_locations_input_file))
@@ -117,3 +127,5 @@ def convert(fire_locations_input_file, finn_input_file):
         writer.writeheader()
         writer.writerows(finn_fires)
 
+    create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
+        start_date, end_date)
