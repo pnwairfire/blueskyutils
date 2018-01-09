@@ -62,33 +62,6 @@ def convert_bsf_to_finn(bsf_fire):
     }
     return finn_fire
 
-def convert(fire_locations_input_file, finn_input_file):
-    # load bsf fires
-    julia_day = extract_julian_day_from_fire_locations_csv_filename(
-        os.path.basename(fire_locations_input_file))
-    logging.debug("Opening %s", fire_locations_input_file)
-    with open(fire_locations_input_file, 'r') as file:
-        bsf_fires = [f for f in csv.DictReader(file)]
-
-    # convert fires from bsf format to finn
-    finn_fires = []
-    for f in bsf_fires:
-        try:
-            finn_fire = convert_bsf_to_finn(f)
-            finn_fire['DAY'] = julia_day
-            finn_fire['TIME'] = '1000'
-            finn_fires.append(finn_fire)
-        except Exception as e:
-            logging.error("Failed to convert BSF fire %s", f)
-            logging.debug(traceback.format_exc())
-    if not finn_fires:
-        raise RuntimeError("Failed to convert all BSF fires")
-
-    with open(finn_input_file, 'w') as finn_output_file:
-        writer = csv.DictWriter(finn_output_file, list(finn_fires[0].keys()))
-        writer.writeheader()
-        writer.writerows(finn_fires)
-
 SPECIES_MAPPINGS = """wrf2fire_map = 'co -> CO', 'no -> NO', 'so2 -> SO2', 'bigalk -> BIGALK',
         'bigene -> BIGENE', 'c2h4 -> C2H4', 'c2h5oh -> C2H5OH',
         'c2h6 -> C2H6', 'c3h8 -> C3H8','c3h6 -> C3H6','ch2o -> CH2O', 'ch3cho -> CH3CHO',
@@ -116,3 +89,31 @@ def create_finn_config_file(finn_config_file, finn_input_file, start_date,
         f.write('diag_level = 400')
         f.write('max_fire_size = 50')
         f.write(SPECIES_MAPPINGS)
+
+def convert(fire_locations_input_file, finn_input_file):
+    # load bsf fires
+    julia_day = extract_julian_day_from_fire_locations_csv_filename(
+        os.path.basename(fire_locations_input_file))
+    logging.debug("Opening %s", fire_locations_input_file)
+    with open(fire_locations_input_file, 'r') as file:
+        bsf_fires = [f for f in csv.DictReader(file)]
+
+    # convert fires from bsf format to finn
+    finn_fires = []
+    for f in bsf_fires:
+        try:
+            finn_fire = convert_bsf_to_finn(f)
+            finn_fire['DAY'] = julia_day
+            finn_fire['TIME'] = '1000'
+            finn_fires.append(finn_fire)
+        except Exception as e:
+            logging.error("Failed to convert BSF fire %s", f)
+            logging.debug(traceback.format_exc())
+    if not finn_fires:
+        raise RuntimeError("Failed to convert all BSF fires")
+
+    with open(finn_input_file, 'w') as finn_output_file:
+        writer = csv.DictWriter(finn_output_file, list(finn_fires[0].keys()))
+        writer.writeheader()
+        writer.writerows(finn_fires)
+
