@@ -89,28 +89,30 @@ def convert(fire_locations_input_file, finn_input_file):
         writer.writeheader()
         writer.writerows(finn_fires)
 
-def create_finn_config_file(finn_fire, args, finn_config_file):
+SPECIES_MAPPINGS = """wrf2fire_map = 'co -> CO', 'no -> NO', 'so2 -> SO2', 'bigalk -> BIGALK',
+        'bigene -> BIGENE', 'c2h4 -> C2H4', 'c2h5oh -> C2H5OH',
+        'c2h6 -> C2H6', 'c3h8 -> C3H8','c3h6 -> C3H6','ch2o -> CH2O', 'ch3cho -> CH3CHO',
+        'ch3coch3 -> CH3COCH3','ch3oh -> CH3OH','mek -> MEK','toluene -> TOLUENE',
+        'nh3 -> NH3','no2 -> NO2','open -> BIGALD','c10h16 -> C10H16',
+        'ch3cooh -> CH3COOH','cres -> CRESOL','glyald -> GLYALD','mgly -> CH3COCHO',
+        'acetol -> HYAC','isop -> ISOP','macr -> MACR'
+        'mvk -> MVK','hcn -> HCN','hcooh -> HCOOH','c2h2 -> C2H2',
+        'oc -> 0.24*PM25 + 0.3*PM10;aerosol', 'bc -> 0.01*PM25 + 0.08*PM10;aerosol',
+        'sulf -> -0.01*PM25 + 0.02*PM10;aerosol',
+        'pm25 -> 0.36*PM25;aerosol','pm10 -> -0.61*PM25 + 0.61*PM10;aerosol'
+"""
 
-    SPECIES_MAPPINGS = """wrf2fire_map = 'co -> CO', 'no -> NO', 'so2 -> SO2', 'bigalk -> BIGALK',
-                         'bigene -> BIGENE', 'c2h4 -> C2H4', 'c2h5oh -> C2H5OH',
-                         'c2h6 -> C2H6', 'c3h8 -> C3H8','c3h6 -> C3H6','ch2o -> CH2O', 'ch3cho -> CH3CHO',
-                         'ch3coch3 -> CH3COCH3','ch3oh -> CH3OH','mek -> MEK','toluene -> TOLUENE',
-                         'nh3 -> NH3','no2 -> NO2','open -> BIGALD','c10h16 -> C10H16',
-                         'ch3cooh -> CH3COOH','cres -> CRESOL','glyald -> GLYALD','mgly -> CH3COCHO',
-                         'acetol -> HYAC','isop -> ISOP','macr -> MACR'
-                         'mvk -> MVK','hcn -> HCN','hcooh -> HCOOH','c2h2 -> C2H2',
-                         'oc -> 0.24*PM25 + 0.3*PM10;aerosol', 'bc -> 0.01*PM25 + 0.08*PM10;aerosol',
-                         'sulf -> -0.01*PM25 + 0.02*PM10;aerosol',
-                         'pm25 -> 0.36*PM25;aerosol','pm10 -> -0.61*PM25 + 0.61*PM10;aerosol'
-                       """
+def create_finn_config_file(finn_config_file, finn_input_file, start_date,
+        end_date, wrf_directory):
+
 
     with open(finn_config_file, 'w') as f:
-        f.write('domains = 1\n')
+        f.write('domains = 1,\n')
         f.write("fire_directory = '{}',\n".format(os.path.dirname(finn_input_file)))
         f.write("fire_filename = '{}',\n".format(os.path.basename(finn_input_file)))
-        f.write("wrf_directory = '{}',\n".format('/home/susan/WRF/data_from_Serena/'))
-        f.write("start_date = '{}',\n".format(args.start_date))
-        f.write("end_date = '{}',\n".format(args.end_date))
+        f.write("wrf_directory = '{}',\n".format(wrf_directory))
+        f.write("start_date = '{}',\n".format(start_date))
+        f.write("end_date = '{}',\n".format(end_date))
         f.write('diag_level = 400')
         f.write('max_fire_size = 50')
         f.write(SPECIES_MAPPINGS)
