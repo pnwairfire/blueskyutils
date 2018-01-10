@@ -37,6 +37,10 @@ def parse_args():
         help='fire data sample start date')
     parser.add_argument('-e', '--end-date', required=True,
         help='fire data sample end date')
+    parser.add_argument('-r', '--run-finn', required=False,
+        action='store_true', default=False, help='run FINN')
+    parser.add_argument('-o', '--store-finn-output', required='False',
+        action='store_true', default=False, help='store FINN output file')
     return parser.parse_args()
 
 def main():
