@@ -96,9 +96,17 @@ def create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
         f.write('max_fire_size = 50')
         f.write(SPECIES_MAPPINGS)
 
-def run_finn(run_finn, store_finn_output_file):
+# not sure how to make running finn a user option
+# finn_output_file is not yet added to bsf2wrfchem as argument
+def run_finn(run_finn, finn_output_directory, finn_output_file):
     cwd='/path/to/desired/output/dir'
-    subprocess.call(run_finn):
+    finn_output = subprocess.call(run_finn):
+
+    with open(finn_output_file, 'w') as f:
+        f.write('finn_output')
+        return finn_output_file
+
+    # figure out how to direct to file to cwd.
 
 ##
 ## Public interface
