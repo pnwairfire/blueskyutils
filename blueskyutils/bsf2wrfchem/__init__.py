@@ -3,6 +3,7 @@ import datetime
 import logging
 import os
 import traceback
+import subprocess
 
 from .speciation import BSF2FINN_SPECIATION_FACTORS
 from .fccs2genveg import FCCS2GENVEG
