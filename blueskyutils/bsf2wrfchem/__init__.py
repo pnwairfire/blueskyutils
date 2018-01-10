@@ -95,6 +95,10 @@ def create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
         f.write('max_fire_size = 50')
         f.write(SPECIES_MAPPINGS)
 
+def run_finn(run_finn, store_finn_output_file):
+    cwd='/path/to/desired/output/dir'
+    subprocess.call(run_finn):
+
 ##
 ## Public interface
 ##
