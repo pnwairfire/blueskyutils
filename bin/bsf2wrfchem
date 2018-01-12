@@ -38,7 +38,7 @@ def parse_args():
     parser.add_argument('-e', '--end-date', required=True,
         help='fire data sample end date')
     parser.add_argument('-r', '--run-finn', required=False,
-        help='run FINN')
+        action="store_true", help='run FINN')
     parser.add_argument('-o', '--finn-output-directory', required=False,
         help='Directory to store finn output file')
     return parser.parse_args()
