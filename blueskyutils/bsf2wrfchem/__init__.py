@@ -98,7 +98,7 @@ def create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
 
 
 def run_finn(finn_congfig_file, finn_output_directory=None):
-    subprocess.run("fire_emis < {}".format(finn_config_file)), cwd=finn_output_directory
+    subprocess.run("fire_emis < {}".format(finn_config_file), cwd=finn_output_directory)
 
 ##
 ## Public interface
@@ -134,3 +134,6 @@ def convert(fire_locations_input_file, finn_input_file, wrf_directory,
 
     create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
         start_date, end_date)
+
+    if args.run_finn:
+        bsf2wrfchem.run_finn(finn_congfig_file, finn_output_directory)
