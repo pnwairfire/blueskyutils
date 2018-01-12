@@ -96,13 +96,6 @@ def create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
         f.write('max_fire_size = 50')
         f.write(SPECIES_MAPPINGS)
 
-# def run_finn(run_finn, finn_output_directory):
-#     cwd='/path/to/desired/output/dir'
-#     finn_output = subprocess.call(run_finn):
-
-#     with open(finn_output_file, 'w') as f:
-#         f.write('finn_output')
-#         return finn_output_file
 
 def run_finn(finn_congfig_file, finn_output_directory=None):
     subprocess.run("fire_emis < {}".format(finn_config_file)), cwd=finn_output_directory
