@@ -97,7 +97,7 @@ def create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
         f.write(SPECIES_MAPPINGS)
 
 
-def run_finn(finn_congfig_file, finn_output_directory=None):
+def run_finn(finn_config_file, finn_output_directory=None):
     subprocess.run("fire_emis < {}".format(finn_config_file), cwd=finn_output_directory)
 
 ##
@@ -105,7 +105,7 @@ def run_finn(finn_congfig_file, finn_output_directory=None):
 ##
 
 def convert(fire_locations_input_file, finn_input_file, wrf_directory,
-        finn_config_file, start_date, end_date):
+        finn_config_file, start_date, end_date, do_run_finn, finn_output_directory):
     # load bsf fires
     julia_day = extract_julian_day_from_fire_locations_csv_filename(
         os.path.basename(fire_locations_input_file))
@@ -135,5 +135,5 @@ def convert(fire_locations_input_file, finn_input_file, wrf_directory,
     create_finn_config_file(finn_input_file, wrf_directory, finn_config_file,
         start_date, end_date)
 
-    if args.run_finn:
-        bsf2wrfchem.run_finn(finn_congfig_file, finn_output_directory)
+    if do_run_finn:
+        run_finn(finn_config_file, finn_output_directory)

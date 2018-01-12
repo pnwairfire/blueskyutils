@@ -47,7 +47,8 @@ def main():
     args = parse_args()
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
     bsf2wrfchem.convert(args.fire_locations_input_file, args.finn_input_file,
-        args.wrf_directory, args.finn_config_file, args.start_date, args.end_date)
+        args.wrf_directory, args.finn_config_file, args.start_date,
+        args.end_date, args.run_finn, args.finn_output_directory)
 
 if __name__ == '__main__':
     main()
