@@ -37,7 +37,7 @@ setup(
         "netCDF4==1.2.4"
     ],
     dependency_links=[
-        "https://pypi.smoke.airfire.org/simple/afscripting/"
+        "https://pypi.airfire.org/simple/afscripting/"
     ],
     tests_require=test_requirements
 )
