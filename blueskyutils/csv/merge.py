@@ -30,7 +30,7 @@ class MergerBase(object, metaclass=abc.ABCMeta):
         TODO: rename do_keep
         """
         rows = []
-        with open(f.file_name, 'r') as input_file:
+        with open(f.file_name, encoding='utf-8') as input_file:
             headers = []
             for row in csv.reader(input_file):
                 if not headers:
