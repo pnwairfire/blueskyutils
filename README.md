@@ -93,10 +93,10 @@ First, install pip (with sudo if necessary):
 
     apt-get install python-pip
 
-Then, to install, for example, v0.3.0, use the following (with sudo if
+Then, to install, for example, v0.4.0, use the following (with sudo if
 necessary):
 
-    pip3 install --extra-index https://pypi.airfire.org/simple blueskyutils==0.3.0
+    pip3 install --extra-index https://pypi.airfire.org/simple blueskyutils==0.4.0
 
 If you get an error like    ```AttributeError: 'NoneType' object has no attribute 'skip_requirements_regex```, it means you need in upgrade pip.  One way to do so is with the following:
 
