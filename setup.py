@@ -25,16 +25,16 @@ setup(
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.8",
         "Operating System :: POSIX",
         "Operating System :: MacOS"
     ],
     url='https://github.com/pnwairfire/blueskyutils',
     description='BlueSky python utilities for AirFire team.',
     install_requires=[
-        "afscripting==1.*",
-        "xmltodict==0.10.2",
-        "netCDF4==1.2.4"
+        "afscripting>=2.0.0,<3.0.0",
+        "xmltodict==0.12.0",
+        "netCDF4==1.5.5.1"
     ],
     dependency_links=[
         "https://pypi.airfire.org/simple/afscripting/"
