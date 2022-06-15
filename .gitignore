@@ -5,3 +5,4 @@ dist/
 blueskyutils.egg-info/
 tmp/
 .cache
+.private/

@@ -34,7 +34,7 @@ setup(
     install_requires=[
         "afscripting>=2.0.0,<3.0.0",
         "xmltodict==0.12.0",
-        "netCDF4==1.5.5.1"
+        "netCDF4>=1.5.5.1,<2.0.0"
     ],
     dependency_links=[
         "https://pypi.airfire.org/simple/afscripting/"
