@@ -156,7 +156,7 @@ bar3,sldj2343,foo545
 
 class MergerTestBase(object):
 
-    def setup(self):
+    def setup_method(self):
         pass
 
     def _file(self, tmpdir, filename, content):
