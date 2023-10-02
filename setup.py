@@ -33,8 +33,8 @@ setup(
     description='BlueSky python utilities for AirFire team.',
     install_requires=[
         "afscripting>=2.0.0,<3.0.0",
-        "xmltodict==0.12.0",
-        "netCDF4>=1.5.5.1,<2.0.0"
+        "xmltodict==0.13.0",
+        "netCDF4==1.6.4"
     ],
     dependency_links=[
         "https://pypi.airfire.org/simple/afscripting/"
